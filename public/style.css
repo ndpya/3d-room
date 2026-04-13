@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com');
+@keyframes fadeIn{
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+body{
+    font-family: 'Rubik', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+}
+
+.nat-gif{
+    background-image: url('images/nat.gif');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 355px;
+    height: 261px;
+    margin: 20px;
+}
+
+.fade-in-content{
+    animation: fadeIn 2s ease-out forwards;
+    opacity: 0;
+}
+
+.socials{
+    display: flex;
+    gap: 15px;
+}
+
+a:link{
+    color:#abb1cf
+}
+
+a:hover{
+    color:#c5b9cd
+}
+
+a:active{
+    color:#92a8d1
+}
+
+a:visited{
+    color:#f7cad0
+}
