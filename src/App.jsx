@@ -62,8 +62,8 @@ function App() {
     controls.update();
     controlsRef.current = controls;
 
-    camera.position.set(-8.10177, -0.54518,2.44466);
-    controls.target.set(-0.11979, -2.68421, 1.78202);
+    camera.position.set(-8.33422, -1.19208, 0.62114);
+    controls.target.set(-0.17042, -2.64081, 0.66118);
 
     const raycaster = new THREE.Raycaster();
     const mouse = new THREE.Vector2();
@@ -89,12 +89,21 @@ function App() {
     loader.setDRACOLoader(dracoLoader);
 
     loader.load('/3d-room/models/room_wip.glb', (gltf) => {
-      scene.add(gltf.scene);
-      renderer.setClearColor(new THREE.Color(0x201910).convertSRGBToLinear());
       gltf.scene.scale.set(1, 1, 1);
       gltf.scene.position.set(0, -3, 0);
 
       gltf.scene.traverse((child) => {
+        if(child.isMesh){
+          child.castShadow = true;
+          child.receiveShadow = true;
+          child.geometry.computeVertexNormals();
+
+          if(child.material){
+            child.material.envMapIntensity = 1;
+            child.material.side = THREE.FrontSide;
+          }
+        }
+
         if(child.name === 'nat' || child.name.includes('nat')){
           natMesh = child;
           while(natMesh.parent &&
@@ -103,7 +112,8 @@ function App() {
           }
           child.userData.clickable = true;
         }
-      })
+      });
+      scene.add(gltf.scene);
     });
     
     const onMouseClick = (event) => {
@@ -152,8 +162,29 @@ function App() {
 
     window.addEventListener('click', onMouseClick); 
     window.addEventListener('mousemove', onMouseMove);
-    const ambientLight = new THREE.AmbientLight(0xFFE7BF, 2);
+
+    // find camera and control coordinates
+    /*
+    window.addEventListener('keydown', (event) => {
+      if(event.key == 'c'){
+        console.log(`camera position: ${camera.position.x.toFixed(5)}, ${camera.position.y.toFixed(5)}, ${camera.position.z.toFixed(5)}`);
+        console.log(`controls position: ${controls.target.x.toFixed(5)}, ${controls.target.y.toFixed(5)}, ${controls.target.z.toFixed(5)}`);
+      }
+    });
+    */
+
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 0.8;
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
+    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.type = THREE.PCFShadowMap;
+
+    const ambientLight = new THREE.AmbientLight(0xFFFFFF, 2);
+    const light = new THREE.DirectionalLight(0xFFFFFF, 1);
+    light.position.set(-5.758811528507977, 13.900633679846791, -13.500235755365786);
+    light.castShadow = true;
     scene.add(ambientLight);
+    scene.add(light);
 
     const animate = () => {
       animationIdRef.current = requestAnimationFrame(animate);
