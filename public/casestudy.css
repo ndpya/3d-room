@@ -1,0 +1,104 @@
+#writeup {
+  max-width: 760px;
+  line-height: 1.7;
+}
+
+#writeup h2 {
+  margin-top: 48px;
+  margin-bottom: 8px;
+}
+
+#writeup p {
+  margin-top: 0;
+}
+
+#writeup section::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+figure {
+  margin: 24px 0;
+}
+
+figure img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  display: block;
+}
+
+figcaption {
+  margin-top: 8px;
+  font-size: 0.85rem;
+  color: #9a9aa8;
+  text-align: center;
+}
+
+figure.align-right {
+  float: right;
+  width: 260px;
+  max-width: 40%;
+  margin: 6px 0 18px 28px;
+}
+
+figure.align-left {
+  float: left;
+  width: 260px;
+  max-width: 40%;
+  margin: 6px 28px 18px 0;
+}
+
+.compare {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  clear: both;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.compare figure {
+  margin: 12px 0;
+}
+
+.compare figure img {
+  width: auto;
+  height: 380px;
+  max-width: 100%;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+@media (max-width: 600px) {
+  figure.align-left,
+  figure.align-right {
+    float: none;
+    width: 100%;
+    max-width: 100%;
+    margin: 24px 0;
+  }
+
+  .compare figure img {
+    height: auto;
+    width: 100%;
+  }
+}

@@ -2,12 +2,160 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="public/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>cogs 127 case study</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" type="text/css" href="casestudy.css" />
   </head>
-  <body>
-    <h1>this is a temporary page for cogs 127 project</h1>
-    <div id="root"></div>
+  <body class="fade-in-content">
+    <h1>Robinhood Learning View</h1>
+    <div id="writeup">
+      <section class="reveal">
+        <h2>Overview</h2>
+        <p>
+          Robinhood sits at the intersection of two significant trends among our
+          generation: a mental health crisis and a surge in investing among
+          financially underprepared young adults. Young adults who are interested in
+          trading stocks and investing while also struggling with mental health
+          conditions may find investing apps such as Robinhood staggering and
+          unintuitive, leaving them feeling uncertain about using such apps to make
+          financial decisions. To bridge the gap between high-risk, overwhelming
+          financial interfaces and the need for mindful, accessible financial
+          literacy, we designed an educational extension for Robinhood that allows
+          users of all experience levels to readily access built-in lessons and to
+          gain a better understanding of financial content.
+        </p>
+      </section>
+
+      <section class="reveal">
+        <h2>User Research</h2>
+        <p>
+          Through our user research, we found that participants often felt confused or
+          unconfident in the financial decisions they made on Robinhood, and that there
+          was a strong need for accessible, experience-based guidance. Financial
+          literacy levels vary from individual to individual, and what surprised us most
+          was how much that variation fluctuated among participants. We expected people
+          to generally struggle with jargon or complex concepts; what we didn't expect
+          was how quietly the app's visual design had made decisions for users who were
+          less informed. Several participants relied on surface-level cues such as high
+          percentages, popular company names, and trending pages rather than evaluating
+          whether those choices actually aligned with their own financial goals or risk
+          tolerance. By the end of our research, we found ourselves pivoting away from a
+          general UI redesign toward a modular, educational approach.
+        </p>
+      </section>
+
+      <section class="reveal">
+        <h2>Hi-Fi Prototype</h2>
+        <p>
+          <b>Introducing:</b> Robinhood Learning View, where users can learn more about
+          investing and using Robinhood at their own pace. Each screen is built around a
+          single insight: the right environment makes financial decisions feel
+          approachable, not overwhelming. Modules are organized by experience level and
+          topic so users never have to guess where to start.
+        </p>
+        <figure class="align-right">
+          <img src="images/casestudy/learning-final.png" alt="Learning View module screen" />
+          <figcaption>The Learning View, organized by experience level and topic.</figcaption>
+        </figure>
+        <p>
+          Our research found that without a clear entry point, users defaulted to
+          surface-level cues rather than decisions that matched their actual goals.
+          Explicit experience levels eliminate that friction before it starts.
+        </p>
+        <p>
+          <b>Learning by doing, without real stakes:</b> Lessons blend simulated
+          Robinhood screens with guided questions, allowing users to build intention
+          inside the app before real money is involved. Because the lesson UI mirrors
+          actual Robinhood patterns, the transition from learning mode to real usage
+          feels fluid rather than like a fresh start.
+        </p>
+        <figure class="align-left">
+          <img src="images/casestudy/sandbox-final.png" alt="Sandbox practice screen" />
+          <figcaption>The sandbox lets users practice with a virtual balance and zero risk.</figcaption>
+        </figure>
+        <p>
+          <b>Building confidence:</b> Comprehension checks ensure users engage actively
+          with each concept rather than passively digesting the content. To lower the
+          stakes, answering each question provides immediate, affirming feedback. Users
+          should leave each lesson feeling confident, not graded. The sandbox carries a
+          labeled virtual balance throughout, a constant reminder that exploring here
+          costs nothing.
+        </p>
+      </section>
+
+      <section class="reveal">
+        <h2>User Testing</h2>
+        <figure class="align-right">
+          <img src="images/casestudy/learning-proto.png" alt="Early learning prototype tested with users" />
+          <figcaption>An early prototype of the learning flow used in testing.</figcaption>
+        </figure>
+        <p>
+          After designing our prototypes, we tested two versions with both users from
+          our initial research and new participants. Across both prototypes, the most
+          consistent finding emphasized safety and flexibility over content quality and
+          lesson depth. Participants responded most strongly to features that gave them
+          the freedom to explore and practice the application without repercussions.
+          They also valued navigational clarity and structure that eliminated confusion.
+        </p>
+        <p>
+          These findings reframed what our extension needed to do. Going forward, we
+          wanted to reposition the sandbox as the default entry point, giving users a
+          flexible, zero-risk environment. Initially, we had designed the modular lesson
+          plans to be the focal point, with the sandbox integrated within lessons. We
+          decided to keep the lesson plans but have them serve as a supplement or
+          guidance instead, letting users learn at their own pace with limited friction.
+        </p>
+      </section>
+
+      <section class="reveal">
+        <h2>Before and After</h2>
+        <p>
+          Our first prototype of the landing page presented a flat list of topic
+          categories, leaving users unsure of where to begin. In the revised version, we
+          organized content by experience level, mode, and subject, including a "Start
+          Here" row, so users always have an immediate, low-pressure action to take.
+          Returning users can view their current progress and resume an in-progress
+          module directly from the landing page. As observed from user feedback, the
+          landing page includes a virtual sandbox with the virtual balance labeled,
+          giving users a visible reminder that they can explore Robinhood freely without
+          the risk of making the wrong decision. The result is a landing page that
+          orients and guides users without overwhelming them.
+        </p>
+        <div class="compare">
+          <figure>
+            <img src="images/casestudy/homepage-proto.png" alt="Landing page before redesign" />
+            <figcaption>Before — a flat list of topic categories.</figcaption>
+          </figure>
+          <figure>
+            <img src="images/casestudy/homepage-final.png" alt="Landing page after redesign" />
+            <figcaption>After — organized by level with a "Start Here" entry point.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <p class="reveal"><a href="/3d-room/">go back</a></p>
+    </div>
+
+    <script>
+      const revealEls = document.querySelectorAll(".reveal");
+      if ("IntersectionObserver" in window) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.15 }
+        );
+        revealEls.forEach((el) => observer.observe(el));
+      } else {
+        revealEls.forEach((el) => el.classList.add("visible"));
+      }
+    </script>
   </body>
 </html>
